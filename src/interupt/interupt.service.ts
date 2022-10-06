@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Interupt } from './interupt.entity';
@@ -13,7 +13,7 @@ export class InteruptService {
         const found = await this.interuptRepository.findOne({
             where: {name},
         });
-        if(!found || found.status != 1) return false;
-        return true
+        if (!found || found.status != 1) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
+        return true;
     }
 }

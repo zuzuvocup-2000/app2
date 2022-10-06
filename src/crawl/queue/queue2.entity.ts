@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class Website{
+export class Queue2{
     @PrimaryGeneratedColumn()
     id: number
 
     @Column()
-    website: string;
+    url: string;
 
     @Column()
-    status: number;
+    website: string;
 
-    @Column({ nullable: true })
-    childrens: string;
+    @Column({default: 0})
+    status: string;
 }

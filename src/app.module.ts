@@ -4,7 +4,8 @@ import { WebsiteModule } from './website/website.module';
 import { InteruptModule } from './interupt/interupt.module';
 import { CrawlModule } from './crawl/crawl.module';
 import { ThreadModule } from './thread/thread.module';
-
+import { BullModule } from '@nestjs/bull';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [ 
     TypeOrmModule.forRoot({
@@ -17,7 +18,10 @@ import { ThreadModule } from './thread/thread.module';
       autoLoadEntities: true,
       synchronize: true,
     }), 
-    WebsiteModule, InteruptModule, CrawlModule, ThreadModule,
+    WebsiteModule, 
+    InteruptModule, 
+    CrawlModule, 
+    ThreadModule,
   ],
 })
 export class AppModule {}
